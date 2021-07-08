@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+    opc-ua-edge-server:
+        image: "${TATUM_IMAGE_REGISTRY_HOST}/opc-ua-edge-server:latest"
+        group_add:
+            - dialout
+        devices:
+            - "/dev/ttyACM0:/dev/ttyACM0"
+        container_name: opc-ua-edge-server
+        hostname: opc-ua-edge-server
+        ports:
+            - "${OPC_UA_HOST_PORT}:4840"
+        volumes:
+            - opc-ua-edge-server-data:/app/data
+
+volumes:
+    opc-ua-edge-server-data:
+        driver: local
+        driver_opts:
+            o: bind
+            type: none
+            device: "${OPC_UA_HOST_VOL_PATH}"
