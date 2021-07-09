@@ -24,7 +24,7 @@ function constructAddressSpace(server) {
     const namespace = addressSpace.getOwnNamespace();
     namespace.addressSpace.rootFolder.objects["edgeTestDevice1"].location.latitudeLongitude.bindVariable({
         get: () => {
-            let out = JSON.parse(execSync(`python ${path.join(__dirname, "data", "telemetry.py")}`, {
+            let out = JSON.parse(execSync(`python3 ${path.join(__dirname, "data", "telemetry.py")}`, {
                 cwd: __dirname,
                 windowsHide: true,
                 encoding: "utf8"
