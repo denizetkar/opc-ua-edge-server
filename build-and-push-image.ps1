@@ -18,7 +18,7 @@ if (!$EnvFilePath -eq "") {
     }
 }
 
-$desired_archs = @("linux/386", "linux/amd64", "linux/arm/v6", "linux/arm/v7", "linux/arm64")
+$desired_archs = @("linux/amd64", "linux/arm/v6", "linux/arm/v7", "linux/arm64")
 [string] $existing_archs = (docker buildx inspect) | Out-String
 foreach ($arch in $desired_archs) {
     if ( ! $existing_archs.Contains($arch)) {

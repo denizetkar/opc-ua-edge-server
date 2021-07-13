@@ -1,12 +1,17 @@
-FROM python:3.8-alpine
+FROM node:14-alpine
 
 WORKDIR /app
 COPY . .
 
-RUN apk update && apk add python3-dev build-base linux-headers
-RUN pip3 install sparkfun-ublox-gps pyserial spidev
-RUN apk add --update nodejs npm
-RUN npm install
+# Install python/pip
+ENV PYTHONUNBUFFERED=1
+RUN apk update && \
+    apk add --update python3 openssl && \
+    python3 -m ensurepip && \
+    pip3 install --upgrade pip && \
+    apk add --update python3-dev build-base linux-headers && \
+    pip3 install sparkfun-ublox-gps pyserial spidev && \
+    npm install
 EXPOSE 4840/tcp
 
 ENTRYPOINT ["npm", "--no-update-notifier", "--no-fund", "start", "--cache", "/app/data/.npm"]
