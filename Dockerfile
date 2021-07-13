@@ -11,6 +11,7 @@ RUN apk update && \
     pip3 install --upgrade pip && \
     apk add --update python3-dev build-base linux-headers && \
     pip3 install sparkfun-ublox-gps pyserial spidev && \
+    npm install -g npm && \
     npm ci
 EXPOSE 4840/tcp
 
