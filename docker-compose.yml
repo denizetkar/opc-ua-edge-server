@@ -11,13 +11,13 @@ services:
         hostname: opc-ua-edge-server
         ports:
             - "${OPC_UA_HOST_PORT}:4840"
-        volumes:
-            - opc-ua-edge-server-data:/app/data
+#         volumes:
+#             - opc-ua-edge-server-data:/app/certificates
 
-volumes:
-    opc-ua-edge-server-data:
-        driver: local
-        driver_opts:
-            o: bind
-            type: none
-            device: "${OPC_UA_HOST_VOL_PATH}"
+# volumes:
+#     opc-ua-edge-server-data:
+#         driver: local
+#         driver_opts:
+#             o: bind
+#             type: none
+#             device: "${OPC_UA_HOST_VOL_PATH}"
