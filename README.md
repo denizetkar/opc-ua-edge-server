@@ -17,6 +17,7 @@ A dockerized OPC UA server that serves telemetry data to the clients. The inform
     * `./build-and-push-image.ps1 -DockerId <image-repo-url>`
 * To run the container image:
   * Modify `TATUM_IMAGE_REGISTRY_HOST` variable in `.env` file to have the value of `<image-repo-url>`,
+  * Make sure that the GPS module is connected and the linux device path is the same as the device path specified in `docker-compose.yml`, which is by default `/dev/ttyACM0`,
   * Run the following command in some terminal `docker-compose up -d`,
   * You may also need to run `sudo ./scripts/iiot-opcua-setup-trust.sh` script in order to establish a trust between the OPC UA server and the Azure IoT Edge runtime. Or you could modify the script to fit your particular use case.
 * To stop the container:
